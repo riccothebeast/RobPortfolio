@@ -1,0 +1,174 @@
+/* ===== Global Styles ===== */
+:root {
+  --bg: #f9f9fb;
+  --card: #fff;
+  --text: #222;
+  --muted: #555;
+  --accent: #4f46e5;
+  --radius: 12px;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Layout ===== */
+.wrap {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card {
+  max-width: 900px;
+  width: 100%;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  margin-bottom: 2rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.navbar a {
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+}
+
+.navbar a.active,
+.navbar a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* makes header elements stack on smaller screens */
+}
+
+.avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* ===== Main Content ===== */
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+}
+
+.timeline {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.tl-item {
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+footer a {
+  font-weight: 600;
+}
+
+/* ===== Responsive Breakpoints ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .wrap {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .navbar ul {
+    justify-content: center;
+  }
+
+  header {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .avatar img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.2rem;
+  }
+}

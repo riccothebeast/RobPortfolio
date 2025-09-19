@@ -1,6 +1,7 @@
 /* ===== Global Styles ===== */
 :root {
-  --bg: aqua;
+  /* Using a default fallback color while bg image loads */
+  --bg: #7fe0e0; /* aqua-ish fallback */
   --card: #fff;
   --text: #222;
   --muted: #555;
@@ -17,7 +18,14 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg);
+  /* Background image (path is relative to this CSS file) */
+  background-color: var(--bg);
+  background-image: url("../bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* For large screens keep fixed for a nice aesthetic, but overridden on mobile */
+  background-attachment: fixed;
   color: var(--text);
   line-height: 1.6;
 }
@@ -42,11 +50,23 @@ a:hover {
 .card {
   max-width: 900px;
   width: 100%;
-  background: var(--card);
+  /* Slight translucency so background image peeks through */
+  background: rgba(255,255,255,0.95);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 2rem;
 }
+
+/* Layout grid for main content: two columns on wider screens */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* main + sidebar */
+  gap: 2rem;
+}
+
+/* Make sections flow nicely inside grid columns */
+main { grid-column: 1; }
+aside { grid-column: 2; }
 
 /* ===== Navbar ===== */
 .navbar {
@@ -150,6 +170,11 @@ footer a {
     width: 100px;
     height: 100px;
   }
+
+  /* Collapse grid to single column on tablet */
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Mobile */
@@ -170,6 +195,11 @@ footer a {
 
   .section h2 {
     font-size: 1.2rem;
+  }
+
+  /* Don't use fixed background on mobile to avoid jitter and performance issues */
+  body {
+    background-attachment: scroll;
   }
 }
 /* ===== Contact Page Styles ===== */
